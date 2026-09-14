@@ -12,11 +12,13 @@ void pop_back(struct Vector *);
 _Bool is_empty(struct Vector *);
 int get_back(struct Vector *, size_t);
 size_t v_size(struct Vector *);
+void printv(struct Vector *);
 
 /* easier/shorter function pointers */
 struct Vector *(*new_v)(void) = &makeVector;
 void (*push)(struct Vector *, int) = &push_back;
 void (*pop)(struct Vector *) = &pop_back;
+void (*prv)(struct Vector *) = &printv;
 
 /* for now our vector only stores integers */
 struct Vector
@@ -79,12 +81,14 @@ pop_back(struct Vector *v)
     }
 }
 
-_Bool 
+/* check if vector is empty, very obvious function tbh */
+_Bool
 is_empty(struct Vector *v)
 {
     return v->size == 0;
 }
 
+/* get back the element at a particular index 'i' */
 int 
 get_back(struct Vector *v, size_t i)
 {
@@ -97,8 +101,21 @@ get_back(struct Vector *v, size_t i)
     return v->data[i];
 }
 
+/* blah blah */
 size_t
 v_size(struct Vector *v)
 {
     return v->size;
+}
+
+/* BLAH BLAH */
+void
+printv(struct Vector *v)
+{
+    for (size_t s = 0; s < v_size(v); ++s) /* i love how i used v_size here, hehe */
+    {
+        printf("%d ", v->data[s]);
+    }
+
+    printf("\n");
 }
