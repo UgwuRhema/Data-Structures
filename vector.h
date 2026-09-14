@@ -6,6 +6,12 @@ struct Vector;
 struct Vector *makeVector();
 void destroyVector(struct Vector *);
 void push_back(struct Vector *, int);
+void pop_back(struct Vector *);
+
+/* easier/shorter function pointers */
+struct Vector *(*new_v)(void) = &makeVector;
+void (*push)(struct Vector *, int) = &push_back;
+void (*pop)(struct Vector *) = &pop_back;
 
 /* for now our vector only stores integers */
 struct Vector
@@ -56,4 +62,14 @@ push_back(struct Vector *v, int val)
 
     v->data[v->size] = val;
     v->size++;
+}
+
+/* removing an integer from the dynamic vector array(specifically the last one) */
+void
+pop_back(struct Vector *v)
+{
+    if ((*v).size > 0)
+    {
+        (*v).size--; /* just aggressively remove the last element from the heap array */
+    }
 }

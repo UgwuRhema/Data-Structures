@@ -6,6 +6,7 @@ main(void)
 {
     struct Vector *v1 = makeVector();
     push_back(v1, 10);
+    push_back(v1, 50);
     destroyVector(v1);
     return 0;
 }
