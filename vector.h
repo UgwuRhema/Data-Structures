@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 struct Vector;
-struct Vector *makeVector(size_t);
+struct Vector *makeVector();
 void destroyVector(struct Vector *);
 
 /* for now our vector only stores integers */
@@ -15,10 +15,14 @@ struct Vector
 };
 
 struct Vector *
-makeVector(size_t capacity)
+makeVector(void)
 {
     struct Vector *vec = (struct Vector *)malloc(sizeof(struct Vector));
-    (*vec).data = (int *)malloc(capacity * sizeof(int));
+    /* we will use the concept of polymorphism so that we will also be able to allocate
+     * memory upon creating the vector, function overloading */
+    (*vec).data = NULL;
+    vec->capacity = 0;
+    vec->size = 0;
     return vec;
 }
 

@@ -4,7 +4,7 @@
 int
 main(void)
 {
-    struct Vector *v1 = makeVector(50);
+    struct Vector *v1 = makeVector();
     destroyVector(v1);
     return 0;
 }
