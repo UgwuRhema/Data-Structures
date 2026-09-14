@@ -5,6 +5,7 @@
 struct Vector;
 struct Vector *makeVector();
 void destroyVector(struct Vector *);
+void push_back(struct Vector *, int);
 
 /* for now our vector only stores integers */
 struct Vector
@@ -26,6 +27,7 @@ makeVector(void)
     return vec;
 }
 
+/* how can i make this automatic like C++ vectors */
 void
 destroyVector(struct Vector *v)
 {
@@ -36,4 +38,22 @@ destroyVector(struct Vector *v)
     }
 
     return;
+}
+
+/* pushes an integer onto the dynamic vector array */
+void
+push_back(struct Vector *v, int val)
+{
+    if (v->data == NULL)
+    {
+        v->data = (int*)malloc(sizeof(int));
+        v->capacity = 1;
+    } else if (v->size >= v->capacity){
+        v->capacity *= 2;
+        /* so close */
+        v->data = (int*)realloc(v->data, v->capacity * sizeof(int));
+    }
+
+    v->data[v->size] = val;
+    v->size++;
 }
