@@ -1,12 +1,17 @@
 #pragma once
+#include <stddef.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Vector;
 struct Vector *makeVector();
 void destroyVector(struct Vector *);
 void push_back(struct Vector *, int);
 void pop_back(struct Vector *);
+_Bool is_empty(struct Vector *);
+int get_back(struct Vector *, size_t);
+size_t v_size(struct Vector *);
 
 /* easier/shorter function pointers */
 struct Vector *(*new_v)(void) = &makeVector;
@@ -72,4 +77,28 @@ pop_back(struct Vector *v)
     {
         (*v).size--; /* just aggressively remove the last element from the heap array */
     }
+}
+
+_Bool 
+is_empty(struct Vector *v)
+{
+    return v->size == 0;
+}
+
+int 
+get_back(struct Vector *v, size_t i)
+{
+    if (i >= v->size)
+    {
+        fprintf(stderr,"Error: trying to access an element out of bounds. \n");
+        return -1;
+    }
+
+    return v->data[i];
+}
+
+size_t
+v_size(struct Vector *v)
+{
+    return v->size;
 }
