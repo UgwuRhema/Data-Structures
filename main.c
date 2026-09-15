@@ -33,6 +33,9 @@ main(void)
     printf("\n");
     /* Binary Trees */
     struct Tree *parent = makeTree(50, NULL, NULL);
+    parent = insertTree(parent, 23);
+    parent = insertTree(parent, 56);
+    emit_tree(parent);
     destroyTree(parent);
     return 0;
 }
