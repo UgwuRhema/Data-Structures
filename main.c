@@ -26,5 +26,6 @@ main(void)
     head = insert(head, 67);
     printList(head);
     destroyList(head);
+    head = NULL;
     return 0;
 }
