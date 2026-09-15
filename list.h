@@ -27,6 +27,7 @@ insert(struct List *head, int data)
     newList->next = NULL;
     newList->prev = current;
     current->next = newList;
+    current->prev = head;
     return current;
 }
 
