@@ -22,5 +22,6 @@ main(void)
     struct List *head = NULL;
     head = insert(head, 50);
     head->next = insert(head->next, 75);
+    print_list(head);
     return 0;
 }
