@@ -1,3 +1,6 @@
+#ifndef LIST_H
+#define LIST_H
+
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -29,3 +32,5 @@ destroyList(struct List *l)
         free((void*)l);
     }
 }
+
+#endif

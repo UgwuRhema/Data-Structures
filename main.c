@@ -20,5 +20,6 @@ main(void)
 
     /*Doubly Linked Lists*/
     struct List *l1 = newList(32, NULL);
+    destroyList(l1);
     return 0;
 }
