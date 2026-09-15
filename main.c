@@ -1,9 +1,10 @@
 #include <stdio.h>
 #include "vector.h"
-
+#include "list.h"
 int
 main(void)
 {
+    /* Vectors */
     struct Vector *v1 = makeVector();
     push_back(v1, 10);
     push_back(v1, 50);
@@ -16,5 +17,8 @@ main(void)
     printf("All the elements in the vector are: ");
     printv(v1);
     destroyVector(v1);
+
+    /*Doubly Linked Lists*/
+    struct List *l1 = newList(32, NULL);
     return 0;
 }
