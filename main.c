@@ -18,10 +18,12 @@ main(void)
     printv(v1);
     destroyVector(v1);
 
+    printf("\n");
     /*Doubly Linked Lists*/
     struct List *head = NULL;
     head = insert(head, 50);
     head->next = insert(head->next, 75);
+    head->next->next = insert(head->next->next, 67);
     print_list(head);
     return 0;
 }

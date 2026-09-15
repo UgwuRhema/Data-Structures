@@ -7,7 +7,6 @@
 struct List;
 struct List *insert(struct List *, int);
 void print_list(struct List *);
-void destroyList(struct List *);
 
 struct List
 {
@@ -47,12 +46,6 @@ print_list(struct List *l)
         printf("%d\n", l->data);
         print_list(l->next);
     }
-}
-
-void
-destroyList(struct List *l)
-{
-
 }
 
 #endif
