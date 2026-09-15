@@ -6,7 +6,7 @@
 
 struct List;
 struct List *insert(struct List *, int);
-void print_list(struct List *);
+void printList(struct List *);
 
 struct List
 {
@@ -39,13 +39,27 @@ insert(struct List *head, int data)
 }
 
 void
-print_list(struct List *l)
+printList(struct List *l)
 {
     if (l != NULL)
     {
         printf("%d\n", l->data);
-        print_list(l->next);
+        printList(l->next);
     }
+}
+
+void
+destroyList(struct List *head)
+{
+    struct List *curr = head; 
+    while (curr->next != NULL)
+    {
+        struct List *tmp = curr->next;
+        free(curr);
+        curr = tmp;
+    }
+
+    head = NULL;
 }
 
 #endif

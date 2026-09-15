@@ -22,8 +22,9 @@ main(void)
     /*Doubly Linked Lists*/
     struct List *head = NULL;
     head = insert(head, 50);
-    head->next = insert(head->next, 75);
-    head->next->next = insert(head->next->next, 67);
-    print_list(head);
+    head = insert(head, 75);
+    head = insert(head, 67);
+    printList(head);
+    destroyList(head);
     return 0;
 }
