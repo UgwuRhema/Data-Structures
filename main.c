@@ -20,5 +20,7 @@ main(void)
 
     /*Doubly Linked Lists*/
     struct List *head = NULL;
+    head = insert(head, 50);
+    head->next = insert(head->next, 75);
     return 0;
 }

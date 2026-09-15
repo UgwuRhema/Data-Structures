@@ -6,6 +6,7 @@
 
 struct List;
 struct List *insert(struct List *, int);
+void print_list(struct List *);
 void destroyList(struct List *);
 
 struct List
@@ -18,17 +19,34 @@ struct List
 struct List *
 insert(struct List *head, int data)
 {
-    if (head == NULL)
-        head = (struct List *)malloc(sizeof(struct List));
-
-    struct List *current = head;
     struct List *newList = (struct List *)malloc(sizeof(struct List));
+    if (!newList)
+        return head;
     newList->data = data;
     newList->next = NULL;
-    newList->prev = current;
+    newList->prev = NULL;
+
+    if (head == NULL)
+        return newList;
+
+    struct List *current = head;
+    while (current->next != NULL)
+        current = current->next;
+
     current->next = newList;
-    current->prev = head;
-    return current;
+    newList->prev = current;
+
+    return head;
+}
+
+void
+print_list(struct List *l)
+{
+    if (l != NULL)
+    {
+        printf("%d\n", l->data);
+        print_list(l->next);
+    }
 }
 
 void
