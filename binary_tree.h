@@ -67,9 +67,21 @@ emit_tree(struct Tree *parent)
     if (parent != NULL)
     {
         printf("Root: %d\n", parent->data);
-        printf("\tLeft: %d\n", parent->left->data);
-        printf("\tRight: %d\n", parent->right->data);
+        if (parent->left != NULL)
+            printf("\tLeft: %d\n", parent->left->data);
+        else
+            printf("\tLeft: NULL\n");
+
+        if (parent->right != NULL)
+            printf("\tRight: %d\n", parent->right->data);
+        else
+            printf("\tRight: NULL\n");
+
+        emit_tree(parent->left);
+        emit_tree(parent->right);
     }
+
+    return;
 }
 
 #endif
