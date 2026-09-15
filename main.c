@@ -29,5 +29,10 @@ main(void)
     printList(head);
     destroyList(head);
     head = NULL;
+
+    printf("\n");
+    /* Binary Trees */
+    struct Tree *parent = makeTree(50, NULL, NULL);
+    destroyTree(parent);
     return 0;
 }
