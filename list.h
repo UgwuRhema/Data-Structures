@@ -52,7 +52,7 @@ void
 destroyList(struct List *head)
 {
     struct List *curr = head; 
-    while (curr->next != NULL)
+    while (curr != NULL)
     {
         struct List *tmp = curr->next;
         free(curr);

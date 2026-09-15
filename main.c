@@ -21,9 +21,18 @@ main(void)
     printf("\n");
     /*Doubly Linked Lists*/
     struct List *head = NULL;
-    head = insert(head, 50);
-    head = insert(head, 75);
-    head = insert(head, 67);
+    //head = insert(head, 50);
+    //head = insert(head, 75);
+    //head = insert(head, 67);
+    struct List *node1 = (struct List *)malloc(sizeof(struct List));
+    struct List *node2 = (struct List *)malloc(sizeof(struct List));
+    node1->data = 5;
+    node2->data = 7;
+    node1->prev = NULL;
+    node1->next = node2;
+    node2->prev = node1;
+    node2->next = NULL;
+    head = node1;
     printList(head);
     destroyList(head);
     head = NULL;
