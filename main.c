@@ -37,8 +37,8 @@ main(void)
     parent = insertTree(parent, 56);
     parent = insertTree(parent, 20); //node 23's children
     parent = insertTree(parent, 34);
-    parent = insertTree(parent, 45); //node 56's children
-    parent = insertTree(parent, 71);
+    parent = insertTree(parent, 45);
+    parent = insertTree(parent, 71); //node 56's child
     emit_tree(parent);
     destroyTree(parent);
     return 0;
