@@ -5,32 +5,35 @@
 #include <stdlib.h>
 
 struct List;
-struct List *newList(int, struct List *);
+struct List *insert(struct List *, int);
 void destroyList(struct List *);
 
 struct List
 {
     int data;
     struct List *next;
+    struct List *prev;
 };
 
 struct List *
-newList(int d, struct List *n)
+insert(struct List *head, int data)
 {
-    struct List *new_l = (struct List *)malloc(sizeof(struct List));
-    (*new_l).data = d;
-    (*new_l).next = n;
-    return new_l;
+    if (head == NULL)
+        head = (struct List *)malloc(sizeof(struct List));
+
+    struct List *current = head;
+    struct List *newList = (struct List *)malloc(sizeof(struct List));
+    newList->data = data;
+    newList->next = NULL;
+    newList->prev = current;
+    current->next = newList;
+    return current;
 }
 
 void
 destroyList(struct List *l)
 {
-    if (l != NULL)
-    {
-        free((void*)l->next);
-        free((void*)l);
-    }
+
 }
 
 #endif

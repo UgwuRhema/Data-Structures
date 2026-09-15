@@ -19,7 +19,6 @@ main(void)
     destroyVector(v1);
 
     /*Doubly Linked Lists*/
-    struct List *l1 = newList(32, NULL);
-    destroyList(l1);
+    struct List *head = NULL;
     return 0;
 }
