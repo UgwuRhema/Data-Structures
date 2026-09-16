@@ -10,7 +10,7 @@ struct Tree *makeTree(int, struct Tree *, struct Tree *);
 void destroyTree(struct Tree *);
 struct Tree *insertTree(struct Tree *, int);
 void emit_tree(struct Tree *);
-_Bool search(struct Tree *, int);
+int search(struct Tree *, int);
 
 struct Tree
 {
@@ -86,21 +86,21 @@ emit_tree(struct Tree *parent)
     return;
 }
 
-_Bool
+int
 search(struct Tree *parent, int key)
 {
     if (parent == NULL)
-        return  false;
+        return 1;
 
     if (key == parent->data)
-        return true;
+        return 0;
 
     if (key < (*parent).data)
         search(parent->left, key);
     else if (key > (*parent).data)
           search(parent->right, key);
 
-    return false;
+    return 1;
 }
 
 #endif
