@@ -3,12 +3,14 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <stdbool.h>
 
 struct Tree;
 struct Tree *makeTree(int, struct Tree *, struct Tree *);
 void destroyTree(struct Tree *);
 struct Tree *insertTree(struct Tree *, int);
 void emit_tree(struct Tree *);
+_Bool search(struct Tree *, int);
 
 struct Tree
 {
@@ -82,6 +84,23 @@ emit_tree(struct Tree *parent)
     }
 
     return;
+}
+
+_Bool
+search(struct Tree *parent, int key)
+{
+    if (parent == NULL)
+        return  false;
+
+    if (key == parent->data)
+        return true;
+
+    if (key < (*parent).data)
+        search(parent->left, key);
+    else if (key > (*parent).data)
+          search(parent->right, key);
+
+    return false;
 }
 
 #endif

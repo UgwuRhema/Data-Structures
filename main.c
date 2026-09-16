@@ -39,6 +39,10 @@ main(void)
     parent->right = insertTree(parent->right, 17);
     parent->right = insertTree(parent->right, 39);
     emit_tree(parent);
+    if (search(parent, 17))
+    {
+        printf("\nFound 17!\n");
+    }
     destroyTree(parent);
     return 0;
 }
