@@ -96,9 +96,9 @@ search(struct Tree *parent, int key)
         return 0;
 
     if (key < (*parent).data)
-        search(parent->left, key);
+        return search(parent->left, key);
     else if (key > (*parent).data)
-          search(parent->right, key);
+        return search(parent->right, key);
 
     return 1;
 }
