@@ -32,7 +32,12 @@ main(void)
 
     printf("\n");
     /* Binary Trees */
-    struct Tree *parent = makeTree(50, NULL, NULL);
+    struct Tree *parent = makeTree(20, NULL, NULL);
+    parent = insertTree(parent, 15);
+    parent = insertTree(parent, 23);
+    parent->left = insertTree(parent->left, 10);
+    parent->right = insertTree(parent->right, 17);
+    parent->right = insertTree(parent->right, 39);
     emit_tree(parent);
     destroyTree(parent);
     return 0;
