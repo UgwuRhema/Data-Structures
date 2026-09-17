@@ -103,4 +103,17 @@ search(struct Tree *parent, int key)
     return 1;
 }
 
+struct Tree *
+searchTree(struct Tree *p, int key)
+{
+    if (p == NULL) return p;
+    if (key == p->data)
+        return p;
+
+    if (key < (*p).data)
+        return searchTree(p->left, key);
+
+    return searchTree(p->right, key);
+}
+
 #endif
