@@ -47,10 +47,15 @@
 			fprintf(stderr, "Vector or Value is NULL\n"); \
 			exit(1); \
 		} \
-		int i = 0; \
-		while (i < (Vec)->size){ \
-			printf(); \
+		size_t _i = 0; \
+		while (_i < (Vec)->size){ \
+			_Generic((Vec)->data[_i], \
+					int: printf("%d", (Vec)->data[_i++]), \
+					double: printf("%.2lf", (Vec)->data[_i++]), \
+					char: printf("%c", (Vec)->data[_i++])\
+			); \
 		} \
+		printf("\n"); \
 	} while(0)
 
 vector(int)
@@ -64,5 +69,6 @@ main(void)
 	push(int, &v1, 15);
 	push(int, &v1, 12);
 	push(int, &v1, 23);/*the vector 'v' capacity should increase on this!*/
+	vec_print(&v1);
 	return 0;
 }
