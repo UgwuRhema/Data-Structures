@@ -23,6 +23,7 @@ main(void)
 {
 	vector_int v1;
 	vector_init(int, &v1, 5);
-	(void)v1;
+	int a = 0;
+	(void)a; /*I want to debug with gdb, i just needed another line of code here*/
 	return 0;
 }
