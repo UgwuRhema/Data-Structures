@@ -34,7 +34,7 @@
 #define pop(Vec) \
 	do { \
 		if (Vec != NULL) \
-			(Vec)->size--;/*aggressively remove the last element*/ \
+			(Vec)->data[(Vec)->size--] = 0;/*aggressively remove the last element*/ \
 		else { \
 			fprintf(stderr, "Vector is NULL\n"); \
 			exit(1); \
