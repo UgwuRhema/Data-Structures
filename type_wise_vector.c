@@ -11,7 +11,7 @@
 #define vector_init(Type, Vec, Cap) \
 	do { \
 		if (Vec == NULL) exit(1); \
-		(Vec)->data = (Type *)malloc((Cap) * (sizeof(Type))); \
+		(Vec)->data = (Type *)calloc(Cap, (sizeof(Type))); \
 		if ((Vec)->data == NULL) \
 			exit(1); \
 		(Vec)->capacity = Cap; \
@@ -39,6 +39,7 @@ main(void)
 	vector_int v1;
 	vector_init(int, &v1, 5);
 	push(int, &v1, 10);
-	printf("%d\n", v1.data[0]);/*test, should be 10*/
+	push(int, &v1, 15);
+	printf("%d\n", v1.data[1]);
 	return 0;
 }
