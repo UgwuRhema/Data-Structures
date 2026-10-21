@@ -30,6 +30,28 @@
 		} \
 		(Vec)->data[(Vec)->size++] = (Type)Val; /*this is actually bad*/ \
 	} while(0)
+/*the obvious next thing*/
+#define pop(Vec) \
+	do { \
+		if (Vec != NULL) \
+			(Vec)->size--;/*aggressively remove the last element*/ \
+		else { \
+			fprintf(stderr, "Vector is NULL\n"); \
+			exit(1); \
+		} \
+	} while(0)
+
+#define vec_print(Vec) \
+	do { \
+		if (Vec == NULL || (Vec)->data == NULL) { \
+			fprintf(stderr, "Vector or Value is NULL\n"); \
+			exit(1); \
+		} \
+		int i = 0; \
+		while (i < (Vec)->size){ \
+			printf(); \
+		} \
+	} while(0)
 
 vector(int)
 
@@ -40,8 +62,7 @@ main(void)
 	vector_init(int, &v1, 3);
 	push(int, &v1, 10);
 	push(int, &v1, 15);
+	push(int, &v1, 12);
 	push(int, &v1, 23);/*the vector 'v' capacity should increase on this!*/
-	/*It didn't increase to 6? why is that?*/
-	push(int, &v1, 2);/*so what happens when we push one more? segmenetation fault?*/
 	return 0;
 }
