@@ -40,5 +40,6 @@ main(void)
 	vector_init(int, &v1, 3);
 	push(int, &v1, 10);
 	push(int, &v1, 15);
+	push(int, &v1, 23);/*the vector 'v' capacity should increase on this!*/
 	return 0;
 }
