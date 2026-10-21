@@ -41,5 +41,7 @@ main(void)
 	push(int, &v1, 10);
 	push(int, &v1, 15);
 	push(int, &v1, 23);/*the vector 'v' capacity should increase on this!*/
+	/*It didn't increase to 6? why is that?*/
+	push(int, &v1, 2);/*so what happens when we push one more? segmenetation fault?*/
 	return 0;
 }
