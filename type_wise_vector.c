@@ -37,9 +37,8 @@ int
 main(void)
 {
 	vector_int v1;
-	vector_init(int, &v1, 5);
+	vector_init(int, &v1, 3);
 	push(int, &v1, 10);
 	push(int, &v1, 15);
-	printf("%d\n", v1.data[1]);
 	return 0;
 }
