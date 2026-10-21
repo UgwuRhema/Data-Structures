@@ -10,7 +10,7 @@
 #define vector_init(Type, Vec, Cap) \
 	do { \
 		(Vec)->data = (Type *)malloc((Cap) * (sizeof(Type))); \
-		if ((Vec)->data) \
+		if (!(Vec)->data) \
 			exit(1); \
 		(Vec)->capacity = Cap; \
 		(Vec)->size = 0; \
