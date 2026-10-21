@@ -21,7 +21,7 @@
 #define push(Type, Vec, Val) \
 	do { \
 		if (Vec == NULL || (Vec)->data == NULL) exit(1); \
-		if ((Vec)->size >= (Vec)->capacity) \
+		if ((Vec)->size > (Vec)->capacity) \
 		{ \
 			(Vec)->capacity *= 2; \
 			(Vec)->data = (Type *)realloc((Vec)->data, (Vec)->capacity * sizeof(Type)); \
@@ -50,9 +50,9 @@
 		size_t _i = 0; \
 		while (_i < (Vec)->size){ \
 			_Generic((Vec)->data[_i], \
-					int: printf("%d", (Vec)->data[_i++]), \
-					double: printf("%.2lf", (Vec)->data[_i++]), \
-					char: printf("%c", (Vec)->data[_i++])\
+					int: printf("%d ", (Vec)->data[_i++]), \
+					double: printf("%.2lf ", (Vec)->data[_i++]), \
+					char: printf("%c ", (Vec)->data[_i++])\
 			); \
 		} \
 		printf("\n"); \
@@ -69,6 +69,7 @@ main(void)
 	push(int, &v1, 15);
 	push(int, &v1, 12);
 	push(int, &v1, 23);/*the vector 'v' capacity should increase on this!*/
-	vec_print(&v1);
+	vec_print(&v1);/*yayy, it works*/
+	pop(&v1);
 	return 0;
 }
