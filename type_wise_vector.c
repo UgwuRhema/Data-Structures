@@ -1,4 +1,5 @@
 #include <stdlib.h>
+#include <stdio.h>
 
 #define vector(type) \
 	typedef struct { \
@@ -19,7 +20,7 @@
 
 #define push(Type, Vec, Val) \
 	do { \
-		if (Vec == NULL) exit(1); \
+		if (Vec == NULL || (Vec)->data == NULL) exit(1); \
 		if ((Vec)->size >= (Vec)->capacity) \
 		{ \
 			(Vec)->capacity *= 2; \
@@ -27,6 +28,7 @@
 		} else if ((Vec)->capacity == 0) { \
 			(Vec)->capacity = 5; /*just enough for 5 elements*/ \
 		} \
+		(Vec)->data[(Vec)->size++] = (Type)Val; /*this is actually bad*/ \
 	} while(0)
 
 vector(int)
@@ -37,5 +39,6 @@ main(void)
 	vector_int v1;
 	vector_init(int, &v1, 5);
 	push(int, &v1, 10);
+	printf("%d\n", v1.data[0]);/*test, should be 10*/
 	return 0;
 }
