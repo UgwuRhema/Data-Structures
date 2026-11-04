@@ -36,6 +36,7 @@ main(int argc, char *argv[])
 	insert(&head, 6);
 	insert(&head, 7);
 	insert(&head, 12);
+	printlist(head);
 	cleanlist(head);
 	return 0;	
 }
@@ -47,4 +48,18 @@ insert(struct node_t **head, int val)
 	nn->val = val;
 	nn->next = *head;
 	*head = nn;
+}
+
+void
+printlist(struct node_t *head)
+{
+	if (!head) return;
+	struct node_t *curr = head;
+	while (curr)
+	{
+		printf("%d->", curr->val);
+		curr = curr->next;
+	}
+	if (!curr)
+		printf("NULL\n");
 }
