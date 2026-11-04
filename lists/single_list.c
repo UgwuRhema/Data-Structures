@@ -49,10 +49,12 @@ int
 main(int argc, char *argv[])
 {
 	struct node_t *head = NULL;
-	insert(&head, 6);
-	insert(&head, 7);
-	insert(&head, 12);
-	printlist(head);
+	insert(&head, 1);
+	insert(&head, 2);
+	insert(&head, 3);
+	insert(&head, 4);
+	insert(&head, 5);
+	head = reverse(&head);
 	printlist(head);
 	cleanlist(head);
 	return 0;	
@@ -79,4 +81,33 @@ printlist(struct node_t *head)
 	}
 	if (!curr)
 		printf("NULL\n");
+}
+
+// a2 g7 b3 c4
+void
+insert_at(struct node_t **head, int val, int offset)
+{
+	struct node_t *nn = (struct node_t *)malloc(sizeof(struct node_t));
+	nn->val = val;
+	nn->next = NULL;
+	struct node_t *temp = traverse_to(*head, offset - 1);
+	struct node_t *nth = temp->next;
+	temp->next = nn;
+	nn->next = nth;
+}
+
+struct node_t *
+reverse(struct node_t **head)
+{
+	struct node_t *curr, *prev;
+	prev = NULL;
+	curr = *head;
+	while (curr)
+	{
+		struct node_t *next = curr->next;
+		curr->next = prev;
+		prev = curr;
+		curr = next;
+	}
+	return prev;
 }
