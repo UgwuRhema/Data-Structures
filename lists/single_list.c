@@ -15,6 +15,22 @@ struct node_t
 	struct node_t *next;
 };
 
+/*a mini helper function*/
+struct node_t *
+traverse_to(struct node_t *head, int offset)
+{
+	struct node_t *curr = head;
+	int count = 0;
+	while (curr)
+	{
+		count++;
+		if (count == offset)
+			return curr;
+		curr = curr->next;
+	}
+	return NULL;
+}
+
 void
 cleanlist(struct node_t *head)
 {
@@ -36,6 +52,7 @@ main(int argc, char *argv[])
 	insert(&head, 6);
 	insert(&head, 7);
 	insert(&head, 12);
+	printlist(head);
 	printlist(head);
 	cleanlist(head);
 	return 0;	
