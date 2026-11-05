@@ -6,7 +6,7 @@ void insert(struct node_t **, int);
 void insert_at(struct node_t **, int, int);
 struct node_t *reverse(struct node_t **);
 void printlist(struct node_t *);
-void delete_at(struct node_t *, int);
+void delete_at(struct node_t **, int);
 
 /*singly linked lists*/
 struct node_t
@@ -55,6 +55,10 @@ main(int argc, char *argv[])
 	insert(&head, 4);
 	insert(&head, 5);
 	head = reverse(&head);
+	printlist(head);
+	insert_at(&head, 67, 3);
+	printlist(head);
+	delete_at(&head, 2);
 	printlist(head);
 	cleanlist(head);
 	return 0;	
@@ -110,4 +114,18 @@ reverse(struct node_t **head)
 		curr = next;
 	}
 	return prev;
+}
+
+// head a1 b2 c3 d4
+void
+delete_at(struct node_t **head, int n)
+{
+	if (n == 1)
+	{
+		
+	}
+	struct node_t *temp = traverse_to(*head, n - 1);
+	struct node_t *nth = temp->next;
+	temp->next = nth->next;
+	free(nth);
 }
